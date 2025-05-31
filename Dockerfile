@@ -1,10 +1,8 @@
-
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
+COPY breach-checker.py .
 
-COPY check_vazamentos.py .
+RUN pip install requests
 
-RUN pip install --no-cache-dir requests
-
-CMD ["python", "check_vazamentos.py"]
+ENTRYPOINT ["python", "breach-checker.py"]
